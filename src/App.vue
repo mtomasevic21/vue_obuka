@@ -3,9 +3,9 @@
     <img alt="Vue logo" src="./assets/logo.png">
     <h1>{{title}}</h1>
     
-    <button @click="addNumber()">+</button>
-    <h3>{{number1}}</h3>
-    <button @click="removeNumber()">-</button> 
+    <button @click="changeNumber('plus')">+</button>
+    <h3>{{number}}</h3>
+    <button @click="changeNumber('minus')">-</button> 
 
   </div>
 </template>
@@ -15,18 +15,30 @@ export default {
 data() {
   return {
     title:'VUE OBUKA',
-    number1: 0,
-    number2: 0
+    number: 0
 
   }
 },
 
 methods:{
   addNumber(){
-    this.number1 = this.number1 + 1
+    this.number = this.number + 1
   },
   removeNumber(){
-    this.number1 = this.number1 - 1
+    this.number = this.number - 1
+  },
+  // funkcija koja radi i sabiranje i oduzimanje
+  changeNumber(operation){
+if (operation=='plus') {
+  this.number = this.number + 1
+} else if (operation == 'minus'){
+  this.number--
+}
+//za ispis rezultata u conzoli
+console.log(this.number)
+
+//mozemo sve sto smo gore definisali mozemo u funkcijama da koristimo
+this.title = this.title + ' ' + this.number
   }
 },
 }
